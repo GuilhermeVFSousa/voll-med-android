@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Vollmed" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">#308873</item>
+        <item name="colorPrimaryVariant">#205d50</item>
+        <item name="colorOnPrimary">#ffffff</item>
+        <item name="colorSecondary">#3c757d</item>
+        <item name="colorSecondaryVariant">#265257</item>
+        <item name="colorOnSecondary">#ffffff</item>
+        <item name="android:colorBackground">#f2f2f2</item>
+        <item name="colorOnBackground">#000000</item>
+        <item name="colorSurface">#ffffff</item>
+        <item name="colorOnSurface">#000000</item>
+        <item name="colorError">#a01e3b</item>
+        <item name="colorOnError">#ffffff</item>
+    </style>
+
+    <style name="Theme.Vollmed" parent="Base.Theme.Vollmed" />
+</resources>
