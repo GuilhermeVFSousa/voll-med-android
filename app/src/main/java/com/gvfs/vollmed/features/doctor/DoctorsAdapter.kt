@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gvfs.vollmed.databinding.FragmentDoctorListItemBinding
+import com.gvfs.vollmed.features.doctor.domain.DoctorResume
 import com.gvfs.vollmed.features.doctor.model.DoctorModel
 
-class DoctorsAdapter(private val doctors: List<DoctorModel>): RecyclerView.Adapter<DoctorsAdapter.ViewHolder>() {
+class DoctorsAdapter(private val doctors: List<DoctorResume>): RecyclerView.Adapter<DoctorsAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binder: FragmentDoctorListItemBinding): RecyclerView.ViewHolder(binder.root) {
 
