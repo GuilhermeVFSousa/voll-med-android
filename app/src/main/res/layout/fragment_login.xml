@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             tools:context=".login.LoginFragment">
 
+
             <ImageView
                 android:id="@+id/form_login_logo"
                 android:layout_width="0dp"
@@ -68,14 +69,28 @@
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progressIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="22dp"
+                android:indeterminate="true"
+                app:indicatorColor="@color/white"
+                android:visibility="invisible"
+                android:elevation="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/form_login_textinputlayout_password" />
+
             <Button
                 android:id="@+id/form_login_btn_submit"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_margin="16dp"
-                android:text="Entrar"
+                android:text="@string/login_enter"
                 android:textAllCaps="true"
                 android:background="@drawable/button_rounded_background"
+                android:elevation="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/form_login_textinputlayout_password"
@@ -93,6 +108,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/form_login_btn_submit"
                 app:layout_constraintVertical_bias="1" />
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
