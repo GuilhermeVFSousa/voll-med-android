@@ -31,9 +31,9 @@ class AuthInterceptor @Inject constructor(
             header("Authorization", "Bearer ${getToken()}")
         }
         install(HttpTimeout) {
-            requestTimeoutMillis = 15000L
-            connectTimeoutMillis = 15000L
-            socketTimeoutMillis = 15000L
+            requestTimeoutMillis = Constants.HTTP_REQUEST_TIMEOUT
+            connectTimeoutMillis = Constants.HTTP_REQUEST_TIMEOUT
+            socketTimeoutMillis = Constants.HTTP_REQUEST_TIMEOUT
         }
     }
 
@@ -42,9 +42,9 @@ class AuthInterceptor @Inject constructor(
             serializer = KotlinxSerializer(json)
         }
         install(HttpTimeout) {
-            requestTimeoutMillis = 15000L
-            connectTimeoutMillis = 15000L
-            socketTimeoutMillis = 15000L
+            requestTimeoutMillis = Constants.HTTP_REQUEST_TIMEOUT
+            connectTimeoutMillis = Constants.HTTP_REQUEST_TIMEOUT
+            socketTimeoutMillis = Constants.HTTP_REQUEST_TIMEOUT
         }
     }
 

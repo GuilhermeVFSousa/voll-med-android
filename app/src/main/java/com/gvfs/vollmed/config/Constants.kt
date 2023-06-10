@@ -9,4 +9,6 @@ object Constants {
 
     const val SHARED_PREFERENCES_NAME = "VollMedAuthToken"
     const val TOKEN_KEY = "token"
+
+    const val HTTP_REQUEST_TIMEOUT = 15000L
 }
