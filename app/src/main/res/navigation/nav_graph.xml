@@ -22,10 +22,18 @@
         <action
             android:id="@+id/action_homeFragment_to_doctorsFragment"
             app:destination="@id/doctorsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_patientsFragment"
+            app:destination="@id/patientsFragment" />
     </fragment>
     <fragment
         android:id="@+id/doctorsFragment"
         android:name="com.gvfs.vollmed.features.doctor.DoctorsFragment"
         android:label="fragment_doctors"
         tools:layout="@layout/fragment_doctors" />
+    <fragment
+        android:id="@+id/patientsFragment"
+        android:name="com.gvfs.vollmed.features.patient.PatientsFragment"
+        android:label="fragment_patients"
+        tools:layout="@layout/fragment_patients" />
 </navigation>
