@@ -6,8 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gvfs.vollmed.exceptions.HttpResponseErrorException
 import com.gvfs.vollmed.features.doctor.domain.DoctorResume
-import com.gvfs.vollmed.features.doctor.domain.PageableDoctor
-import com.gvfs.vollmed.features.doctor.model.DoctorModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.ktor.utils.io.printStack
 import kotlinx.coroutines.launch
@@ -17,13 +15,14 @@ import javax.inject.Inject
 class DoctorsViewModel @Inject constructor(
     private val service: DoctorService
 ) : ViewModel() {
-    private val _doctor = MutableLiveData<List<DoctorResume>>()
-    val doctor: LiveData<List<DoctorResume>>get() = _doctor
+
+    private val _doctors = MutableLiveData<List<DoctorResume>>()
+    val doctors: LiveData<List<DoctorResume>>get() = _doctors
 
     fun getDoctors() {
         viewModelScope.launch {
             try {
-                _doctor.value = service.getDoctors()
+                _doctors.value = service.getDoctors()
             } catch (e: HttpResponseErrorException) {
                 e.printStack()
                 emptyList<DoctorResume>()

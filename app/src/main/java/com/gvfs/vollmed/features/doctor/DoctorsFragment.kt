@@ -42,7 +42,7 @@ class DoctorsFragment : Fragment() {
         }
 
         viewModel.getDoctors()
-        viewModel.doctor.observe(viewLifecycleOwner) { doctors ->
+        viewModel.doctors.observe(viewLifecycleOwner) { doctors ->
             adapter = DoctorsAdapter(doctors)
             bind?.progressIndicator?.visibility = View.GONE
             bind?.rvDoctors?.adapter = adapter

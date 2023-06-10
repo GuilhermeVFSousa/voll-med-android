@@ -7,9 +7,13 @@ import com.gvfs.vollmed.databinding.FragmentDoctorListItemBinding
 import com.gvfs.vollmed.features.doctor.domain.DoctorResume
 import com.gvfs.vollmed.features.doctor.model.DoctorModel
 
-class DoctorsAdapter(private val doctors: List<DoctorResume>): RecyclerView.Adapter<DoctorsAdapter.ViewHolder>() {
+class DoctorsAdapter(
+    private val doctors: List<DoctorResume>
+    ): RecyclerView.Adapter<DoctorsAdapter.ViewHolder>() {
 
-    inner class ViewHolder(val binder: FragmentDoctorListItemBinding): RecyclerView.ViewHolder(binder.root) {
+    inner class ViewHolder(
+        val binder: FragmentDoctorListItemBinding
+        ): RecyclerView.ViewHolder(binder.root) {
 
     }
 
