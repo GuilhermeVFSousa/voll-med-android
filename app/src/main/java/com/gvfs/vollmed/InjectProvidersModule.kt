@@ -4,6 +4,7 @@ import android.content.Context
 import com.gvfs.vollmed.config.httpInterceptor.AuthInterceptor
 import com.gvfs.vollmed.features.doctor.DoctorService
 import com.gvfs.vollmed.features.login.service.LoginService
+import com.gvfs.vollmed.features.patient.PatientService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,6 +39,14 @@ object InjectProvidersModule {
         authInterceptor: AuthInterceptor
     ): DoctorService {
         return DoctorService(authInterceptor)
+    }
+
+    @Provides
+    @ActivityRetainedScoped
+    fun providePatientService(
+        authInterceptor: AuthInterceptor
+    ): PatientService {
+        return PatientService(authInterceptor)
     }
 
 }
