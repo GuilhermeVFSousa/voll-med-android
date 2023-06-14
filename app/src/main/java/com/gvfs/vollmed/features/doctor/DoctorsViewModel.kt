@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gvfs.vollmed.exceptions.HttpResponseErrorException
+import com.gvfs.vollmed.features.appointment.domain.Appointment
+import com.gvfs.vollmed.features.appointment.service.AppointmentService
 import com.gvfs.vollmed.features.doctor.domain.DoctorResume
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.ktor.utils.io.printStack
@@ -13,7 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DoctorsViewModel @Inject constructor(
-    private val service: DoctorService
+    private val service: DoctorService,
+    private val appointmentService: AppointmentService
 ) : ViewModel() {
 
     private val _doctors = MutableLiveData<List<DoctorResume>>()
@@ -30,24 +33,4 @@ class DoctorsViewModel @Inject constructor(
             }
         }
     }
-
-
-//    fun getDoctors(): List<DoctorModel> {
-//        return listOf(
-//            DoctorModel(1, "José Silva"),
-//            DoctorModel(2, "André Santos"),
-//            DoctorModel(3, "Maria Oliveira"),
-//            DoctorModel(4, "Carlos Souza"),
-//            DoctorModel(5, "Ana Rodrigues"),
-//            DoctorModel(6, "Paulo Almeida"),
-//            DoctorModel(7, "Fernanda Costa"),
-//            DoctorModel(8, "Luiz Pereira"),
-//            DoctorModel(9, "Mariana Gomes"),
-//            DoctorModel(10, "Ricardo Fernandes"),
-//            DoctorModel(11, "Camila Cardoso"),
-//            DoctorModel(12, "Pedro Martins"),
-//            DoctorModel(13, "Sofia Barbosa"),
-//            DoctorModel(14, "Gustavo Lima")
-//        )
-//    }
 }

@@ -3,4 +3,5 @@
     <string name="login_enter">Entrar</string>
     <string name="doctors_title">Médicos</string>
     <string name="patients_title">Pacientes</string>
+    <string name="appointments_title">Consultas</string>
 </resources>
