@@ -58,6 +58,35 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/fragment_patient_list_item" />
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:id="@+id/flt_btn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:background="@drawable/image_rounded_background"
+                android:gravity="center"
+                android:orientation="horizontal" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_plus"
+                android:elevation="5dp"
+                android:layout_centerInParent="true" />
+
+
+        </RelativeLayout>
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

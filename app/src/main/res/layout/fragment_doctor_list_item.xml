@@ -17,9 +17,11 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white2"
+            app:strokeColor="@android:color/transparent"
+            app:strokeWidth="1dp"
             android:layout_margin="8dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            app:cardCornerRadius="3dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
