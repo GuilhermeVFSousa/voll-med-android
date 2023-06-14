@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_homeFragment_to_patientsFragment"
             app:destination="@id/patientsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_appointmentFragment"
+            app:destination="@id/appointmentFragment" />
     </fragment>
     <fragment
         android:id="@+id/doctorsFragment"
@@ -36,4 +39,9 @@
         android:name="com.gvfs.vollmed.features.patient.PatientsFragment"
         android:label="fragment_patients"
         tools:layout="@layout/fragment_patients" />
+    <fragment
+        android:id="@+id/appointmentFragment"
+        android:name="com.gvfs.vollmed.features.appointment.AppointmentFragment"
+        android:label="fragment_appointment"
+        tools:layout="@layout/fragment_appointment" />
 </navigation>

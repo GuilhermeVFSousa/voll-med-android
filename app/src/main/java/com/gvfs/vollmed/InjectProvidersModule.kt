@@ -2,6 +2,7 @@ package com.gvfs.vollmed
 
 import android.content.Context
 import com.gvfs.vollmed.config.httpInterceptor.AuthInterceptor
+import com.gvfs.vollmed.features.appointment.service.AppointmentService
 import com.gvfs.vollmed.features.doctor.DoctorService
 import com.gvfs.vollmed.features.login.service.LoginService
 import com.gvfs.vollmed.features.patient.PatientService
@@ -47,6 +48,14 @@ object InjectProvidersModule {
         authInterceptor: AuthInterceptor
     ): PatientService {
         return PatientService(authInterceptor)
+    }
+
+    @Provides
+    @ActivityRetainedScoped
+    fun provideAppointmentService(
+        authInterceptor: AuthInterceptor
+    ): AppointmentService {
+        return AppointmentService(authInterceptor)
     }
 
 }

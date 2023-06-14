@@ -1,7 +1,10 @@
 package com.gvfs.vollmed.config.httpInterceptor
 
 import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.gvfs.vollmed.config.Constants
+import com.gvfs.vollmed.utils.serializer.LocalDateTimeSerializer
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import io.ktor.client.HttpClient
@@ -10,6 +13,10 @@ import io.ktor.client.features.HttpTimeout
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.KotlinxSerializer
 import io.ktor.client.request.header
+import kotlinx.serialization.builtins.serializer
+import kotlinx.serialization.modules.SerializersModule
+import kotlinx.serialization.modules.polymorphic
+import java.time.LocalDateTime
 import javax.inject.Inject
 
 @ActivityRetainedScoped
@@ -17,6 +24,7 @@ class AuthInterceptor @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private val json = kotlinx.serialization.json.Json {
         ignoreUnknownKeys = true
         isLenient = true
