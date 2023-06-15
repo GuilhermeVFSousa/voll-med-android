@@ -1,16 +1,15 @@
 package com.gvfs.vollmed.features.patient
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.gvfs.vollmed.R
 import com.gvfs.vollmed.databinding.FragmentPatientsBinding
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class PatientsFragment : Fragment() {
@@ -42,6 +41,10 @@ class PatientsFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+        bind?.fltBtn?.setOnClickListener {
+            findNavController().navigate(PatientsFragmentDirections.actionPatientsFragmentToPatientCreateFragment(1))
+        }
+
         viewModel.getPatients()
 
         viewModel.patients.observe(viewLifecycleOwner) { patients ->
@@ -49,6 +52,7 @@ class PatientsFragment : Fragment() {
             bind?.progressIndicator?.visibility = View.GONE
             bind?.rvPatients?.adapter = adapter
         }
+
     }
 
 }
