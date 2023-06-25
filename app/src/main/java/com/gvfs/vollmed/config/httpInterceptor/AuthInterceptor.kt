@@ -31,6 +31,7 @@ class AuthInterceptor @Inject constructor(
         encodeDefaults = false
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     var clientWithAuthorizationToken = HttpClient{
         install(JsonFeature) {
             serializer = KotlinxSerializer(json)
@@ -45,6 +46,7 @@ class AuthInterceptor @Inject constructor(
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     var client = HttpClient{
         install(JsonFeature) {
             serializer = KotlinxSerializer(json)

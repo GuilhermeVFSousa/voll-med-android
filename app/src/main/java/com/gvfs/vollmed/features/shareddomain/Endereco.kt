@@ -4,11 +4,11 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Endereco (
-    val logradouro: String,
-    val bairro: String,
-    val cep: String,
+    var logradouro: String,
+    var bairro: String,
+    var cep: String,
     val numero: String,
     val complemento: String,
-    val cidade: String,
-    val uf: String
+    var cidade: String,
+    var uf: String
     )
