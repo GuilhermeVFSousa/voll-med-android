@@ -3,6 +3,7 @@ package com.gvfs.vollmed.config
 object Constants {
     const val BASE_URL = "https://voll-med-api-production.up.railway.app/"
 //    const val BASE_URL = "http://localhost:8080/"
+    const val VIA_CEP_URL = "https://viacep.com.br/ws/"
 
     const val LOGIN_ENDPOINT = "login"
     const val DOCTOR_ENDPOINT = "medicos?size=1000&page=0"
