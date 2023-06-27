@@ -6,6 +6,7 @@ import com.gvfs.vollmed.config.Constants
 import com.gvfs.vollmed.config.httpInterceptor.AuthInterceptor
 import com.gvfs.vollmed.exceptions.HttpResponseErrorException
 import com.gvfs.vollmed.features.patient.domain.PageablePatient
+import com.gvfs.vollmed.features.patient.domain.PatientCreate
 import com.gvfs.vollmed.features.patient.domain.PatientResume
 import com.gvfs.vollmed.features.shareddomain.Endereco
 import com.gvfs.vollmed.features.shareddomain.ViaCep
@@ -13,9 +14,11 @@ import dagger.hilt.android.scopes.ActivityRetainedScoped
 import io.ktor.client.call.receive
 import io.ktor.client.features.ClientRequestException
 import io.ktor.client.request.get
+import io.ktor.client.request.post
 import io.ktor.client.request.url
 import io.ktor.client.statement.HttpResponse
 import io.ktor.http.HttpStatusCode
+import io.ktor.utils.io.printStack
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonPrimitive
@@ -39,6 +42,23 @@ class PatientService @Inject constructor(
             throw HttpResponseErrorException()
         } catch (e: Exception) {
             throw HttpResponseErrorException()
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    suspend fun createPatient(patient: PatientCreate): Boolean {
+        return try {
+            authInterceptor.clientWithAuthorizationToken.post<PatientCreate> {
+                url("${Constants.BASE_URL}${Constants.PATIENT_ENDPOINT}")
+                body = patient
+            }
+            true
+        } catch (e: ClientRequestException) {
+            e.printStack()
+            false
+        } catch (e: Exception) {
+            e.printStack()
+            false
         }
     }
 

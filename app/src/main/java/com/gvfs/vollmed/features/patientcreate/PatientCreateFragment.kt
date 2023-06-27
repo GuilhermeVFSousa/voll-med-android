@@ -1,5 +1,6 @@
 package com.gvfs.vollmed.features.patientcreate
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -41,6 +42,7 @@ class PatientCreateFragment : Fragment() {
         return bind?.root
     }
 
+    @SuppressLint("SuspiciousIndentation")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -64,6 +66,21 @@ class PatientCreateFragment : Fragment() {
         viewModel.events.observe( viewLifecycleOwner) { event ->
             when(event) {
                 is AlertEvent.CepNotFound -> fieldPostCode?.error = event.message
+                else -> {}
+            }
+        }
+
+        viewModel.createEvent.observe(viewLifecycleOwner) { event ->
+            when(event) {
+                is AlertEvent.PatientCreated -> {
+                    findNavController().popBackStack()
+                    showSnackBar(event.message)
+                }
+                is AlertEvent.PatientCreatedError -> {
+                    showSnackBar(event.message)
+                    bind?.btnSubmit?.isEnabled = true
+                }
+                else -> {}
             }
         }
 
@@ -125,6 +142,7 @@ class PatientCreateFragment : Fragment() {
         return true
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun submit(
         fieldName : String,
         fieldEmail : String,
@@ -139,9 +157,12 @@ class PatientCreateFragment : Fragment() {
         fieldUf : String
     ) {
         val address = Endereco(fieldStreet, fieldDistrict, fieldPostCode, fieldNumber, fieldComplement,fieldCity, fieldUf)
+        address.cep = address.cep.replace("-", "")
         val patient = PatientCreate(fieldName, fieldEmail, fieldPhone, fieldCpf, address)
-        println(patient)
-        findNavController().popBackStack()
+
+        viewModel.create(patient)
+        bind?.btnSubmit?.isEnabled = false
+
     }
 
 }

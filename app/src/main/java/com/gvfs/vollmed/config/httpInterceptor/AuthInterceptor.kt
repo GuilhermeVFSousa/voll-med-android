@@ -10,9 +10,14 @@ import dagger.hilt.android.scopes.ActivityRetainedScoped
 import io.ktor.client.HttpClient
 import io.ktor.client.features.DefaultRequest
 import io.ktor.client.features.HttpTimeout
+import io.ktor.client.features.defaultRequest
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.KotlinxSerializer
+import io.ktor.client.request.accept
 import io.ktor.client.request.header
+import io.ktor.http.ContentType
+import io.ktor.http.HttpMethod
+import io.ktor.http.contentType
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
@@ -43,6 +48,10 @@ class AuthInterceptor @Inject constructor(
             requestTimeoutMillis = Constants.HTTP_REQUEST_TIMEOUT
             connectTimeoutMillis = Constants.HTTP_REQUEST_TIMEOUT
             socketTimeoutMillis = Constants.HTTP_REQUEST_TIMEOUT
+        }
+        defaultRequest {
+            if (method != HttpMethod.Get) contentType(ContentType.Application.Json)
+            accept(ContentType.Application.Json)
         }
     }
 

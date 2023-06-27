@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-@SerialName("Patient")
+@SerialName("Paciente")
 data class PatientCreate (
     val nome: String,
     val email: String,
