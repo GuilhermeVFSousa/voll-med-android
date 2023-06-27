@@ -47,6 +47,10 @@ class DoctorsFragment : Fragment() {
             bind?.progressIndicator?.visibility = View.GONE
             bind?.rvDoctors?.adapter = adapter
         }
+
+        bind?.fltBtn?.setOnClickListener {
+            findNavController().navigate(DoctorsFragmentDirections.actionDoctorsFragmentToDoctorCreateFragment())
+        }
     }
 
 }
