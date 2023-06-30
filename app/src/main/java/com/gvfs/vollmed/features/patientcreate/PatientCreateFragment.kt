@@ -19,6 +19,7 @@ import com.gvfs.vollmed.extension.addPhoneMask
 import com.gvfs.vollmed.features.alert.AlertEvent
 import com.gvfs.vollmed.features.patient.domain.PatientCreate
 import com.gvfs.vollmed.features.shareddomain.Endereco
+import com.gvfs.vollmed.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -85,21 +86,21 @@ class PatientCreateFragment : Fragment() {
         }
 
         bind?.btnCep?.setOnClickListener {
-            if (!validateField(fieldPostCode, 8, "O CEP precisa ter 8 números")) return@setOnClickListener
+            if (!Utils.validateField(fieldPostCode, 8, "O CEP precisa ter 8 números")) return@setOnClickListener
                 viewModel.getCep(fieldPostCode?.text.toString())
         }
 
         bind?.btnSubmit?.setOnClickListener {
-            if (!validateField(fieldPostCode, 8, "O CEP precisa ter 8 números") ||
-                !validateField(fieldCpf, 11, "O CPF precisa ter 11 números") ||
-                !validateField(fieldPhone, 10, "O Telefone precisa ter ao menos 10 números") ||
-                !validateField(fieldName, null, null) ||
-                !validateField(fieldEmail, null, null) ||
-                !validateField(fieldStreet, null, null) ||
-                !validateField(fieldDistrict, null, null) ||
-                !validateField(fieldNumber, null, null) ||
-                !validateField(fieldCity, null, null) ||
-                !validateField(fieldUf, null, null)) return@setOnClickListener
+            if (!Utils.validateField(fieldPostCode, 8, "O CEP precisa ter 8 números") ||
+                !Utils.validateField(fieldCpf, 11, "O CPF precisa ter 11 números") ||
+                !Utils.validateField(fieldPhone, 10, "O Telefone precisa ter ao menos 10 números") ||
+                !Utils.validateField(fieldName, null, null) ||
+                !Utils.validateField(fieldEmail, null, null) ||
+                !Utils.validateField(fieldStreet, null, null) ||
+                !Utils.validateField(fieldDistrict, null, null) ||
+                !Utils.validateField(fieldNumber, null, null) ||
+                !Utils.validateField(fieldCity, null, null) ||
+                !Utils.validateField(fieldUf, null, null)) return@setOnClickListener
 
             submit(fieldName?.text.toString(),
                     fieldEmail?.text.toString(),
@@ -118,28 +119,6 @@ class PatientCreateFragment : Fragment() {
 
     private fun showSnackBar(message: String): Unit {
         return Snackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
-    }
-
-    private fun validateField(
-        field: TextInputEditText?,
-        length: Int?,
-        message: String?): Boolean {
-        var fieldText = field?.text.toString()
-        fieldText = fieldText.replace("-", "")
-        fieldText = fieldText.replace(".", "")
-        fieldText = fieldText.replace("(", "")
-        fieldText = fieldText.replace(")", "")
-        if ( fieldText.isEmpty()){
-            field?.error = "O campo é obrigatório"
-            return false
-        }
-        if (length != null){
-            if (fieldText.length < length){
-                field?.error = message
-                return false
-            }
-        }
-        return true
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
