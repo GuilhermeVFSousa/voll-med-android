@@ -9,6 +9,7 @@ object Constants {
     const val DOCTOR_ENDPOINT = "medicos?size=1000&page=0"
     const val PATIENT_ENDPOINT = "pacientes?size=1000&page=0"
     const val APPOINTMENT_ENDPOINT = "consultas"
+    const val DOCTOR_SPECIALTY_ENDPOINT = "medicos/especialidades"
 
     const val SHARED_PREFERENCES_NAME = "VollMedAuthToken"
     const val TOKEN_KEY = "token"
