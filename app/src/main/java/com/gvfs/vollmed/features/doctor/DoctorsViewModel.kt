@@ -1,5 +1,7 @@
 package com.gvfs.vollmed.features.doctor
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,6 +24,7 @@ class DoctorsViewModel @Inject constructor(
     private val _doctors = MutableLiveData<List<DoctorResume>>()
     val doctors: LiveData<List<DoctorResume>>get() = _doctors
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun getDoctors() {
         viewModelScope.launch {
             try {

@@ -49,7 +49,7 @@ class PatientService @Inject constructor(
     suspend fun createPatient(patient: PatientCreate): Boolean {
         return try {
             authInterceptor.clientWithAuthorizationToken.post<PatientCreate> {
-                url("${Constants.BASE_URL}${Constants.PATIENT_ENDPOINT}")
+                url("${Constants.BASE_URL}${Constants.PATIENT_CREATE_ENDPOINT}")
                 body = patient
             }
             true

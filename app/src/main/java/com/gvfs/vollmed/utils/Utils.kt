@@ -1,9 +1,12 @@
 package com.gvfs.vollmed.utils
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.google.android.material.textfield.TextInputEditText
 
 class Utils {
     companion object {
+        @RequiresApi(Build.VERSION_CODES.O)
         fun validateField(
             field: TextInputEditText?,
             length: Int?,
@@ -16,6 +19,7 @@ class Utils {
             fieldText = fieldText.replace(")", "")
             if (fieldText.isEmpty()) {
                 field?.error = "O campo é obrigatório"
+                field?.requestFocus()
                 return false
             }
             if (length != null) {

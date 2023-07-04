@@ -28,7 +28,7 @@
                     android:id="@+id/topAppBar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    app:title="Cadastrar Paciente"
+                    app:title="Cadastrar Médico"
                     app:navigationIcon="@drawable/ic_arrow_back"
                     app:contentInsetStartWithNavigation="0dp"
                     app:layout_scrollFlags="scroll|enterAlways">
@@ -79,7 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:hint="CPF">
+                    android:hint="CRM">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txt_doctor_crm"

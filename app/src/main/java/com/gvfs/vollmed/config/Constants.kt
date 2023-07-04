@@ -7,7 +7,9 @@ object Constants {
 
     const val LOGIN_ENDPOINT = "login"
     const val DOCTOR_ENDPOINT = "medicos?size=1000&page=0"
+    const val DOCTOR_CREATE_ENDPOINT = "medicos?size=1000&page=0"
     const val PATIENT_ENDPOINT = "pacientes?size=1000&page=0"
+    const val PATIENT_CREATE_ENDPOINT = "pacientes?size=1000&page=0"
     const val APPOINTMENT_ENDPOINT = "consultas"
     const val DOCTOR_SPECIALTY_ENDPOINT = "medicos/especialidades"
 
